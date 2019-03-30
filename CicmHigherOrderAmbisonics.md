@@ -10,7 +10,7 @@ The hoa library requires cream, pure data, and cicmwrapper
 2. git submodule update --init --recursive
 3. configure it with the location of the pure data source
 4. In ThirdParty/CicmWrapper/Sources/ebox.c
-4.1  comment out the line that tries to toupper and reassign the uppercase name to itself. It's a const char* so hopefully the library doesn't depend on the string
+    * comment out the line that tries to toupper and reassign the uppercase name to itself. It's a const char* so hopefully the library doesn't depend on the string
 
 ### pure data 
 1. In the pure ddata source, v0.49.1, export a getter method to provide the sys_staticpath and the sys_searchpath.
@@ -29,5 +29,7 @@ The hoa library requires cream, pure data, and cicmwrapper
 
 ### Alter help files with library loads
 1. In help files to test if it works
-1.1 add [ declare -stdlib <path to lib> ] to load up the cream and hoa library 
-1.2 Restart the help file to see if the library works
+2. add [ declare -stdlib <path to lib> ] to load up the cream and hoalib
+3. Restart the help file to see if the library works
+
+
