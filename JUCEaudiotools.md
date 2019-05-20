@@ -1,4 +1,18 @@
 # Compiling supercolider and the sc3 plugins
+
+## JUCE && Projucer
+requirements:
+1. freetype2
+2. xinerama
+3. webkit2gtk-4.0
+4. gtk+-x11-3.0
+
+1. Find the Projucer linux makefile
+2. Make and manually install into the directory
+3. Find the AppConfig.h file and change the JUCER_ENABLE_GPL_MODE to 1
+
+
+
 ## supercollider
 1. git clone <supercollider>
 2. follow the readme and install the packages. Problems with different versions of repo Qt and Qt webengine and Qt webkit seems to have been solved, so if you're using the latest version of ubuntu, you're not likely to need downloading of the qt source or finding it, and going through the hassle of configuring and installing qt, the repository version works
@@ -37,6 +51,12 @@ for dexed;
 
 for helm: make and probably resolve the paths
 
+## HELM
+
+### installation
+1. The global makefile will build the vst, lv2 and standalone version
+2. If it complains about the vst aeffect.h that is missing, add the vst library path to the jucer file
+
 ## installing faust
 Faust is a meta language transpiler with various audio language targets, such as pure data, supercollider, c, c++, webaudio
 
@@ -46,11 +66,37 @@ Faust is a meta language transpiler with various audio language targets, such as
 Note: llvm used to have 2 flavours for compilation, so -fno-rtti and rtti. By default rtti is in place. But all linked/compiled programs needed to be one of the two. Past llvm-6 this is not an issue
 
 ## Compiling surge the synthesizer
+
+### prequisite files 
+				build-essential
+				libcairo-dev
+				libxkbcommon-x11-dev
+				libxkbcommon-dev
+				libxcb-cursor-dev
+				libxcb-keysyms1-dev
+				libxcb-util-dev
+
 1. git clone <surge github>
 2. find the steinberg vst2 sdk. There are a few of those around, including the one that copies files from the vst2 sdk into the vst3sdk
 3. in the surge directory, following their build instructions, you would have git cloned the vst3sdk
 4. for some reason, even with the VST2SDK_DIR exported with correct vst3sdk path, the build program will still look for vst3sdk in the surge directory. So do the copy_from_vst2_to vst3 for the vst3sdk directory in surge. 
 5. Carry on the build process
+
+### install direcotries
+/usr/lib/vst
+/usr/lib/vst3
+~/.vst
+~/.local/share/Surge
+
+### premake for surge
+1. surge requires premake to confgure the files for making
+2. repository premake does not work with the current surge, so you'll have to download the premake from github
+3. in the premake directory
+3.1 make -f BootStrap.mak linux # to create a premake binary
+3.2 using that premake, generate a makefile 
+3.3 using the newly made premake in the bin/release, premake embed to embed lua strings into the premake binary
+3.4 premake embed
+3.5 make config=release
 
 ## Shuriken beat slicer
 1. git clone <aubio>
@@ -101,5 +147,28 @@ For ubuntu:
 5.3 create the .emacs file according to http://pages.tidalcycles.org/getting_started.html#emacs . a note to emacs users - emacs --terminal `tty` <file> will give the traditional console experience otherwise the gui is used
 6. Compile sc3-plugins. At the moment scide will be looking for the .so files but not in the .local/lib/SuperCollider/plugins where the sc3-plugins script installs them. Softlink them to the .local/share/SuperCollider/Extensions directory instead
 7. load up the superdirt startup.scd file and evaluate
+
+## OBX-d
+obx-d is a software emulation of an oberheim synthesizer
+https://github.com/reales/OB-Xd
+
+1. Using Projucer, add the path to a patched version of vst3sdk that has vst2sdk files patched into it 
+
+## Olive
+Olive is a video editor 
+### dependencies
+1. apt-get install build-essential
+2.  apt-get install qt5-default qtmultimedia5-dev libqt5multimedia5 libqt5multimedia5-plugins libqt5svg5-dev
+3. apt-get install libavformat-dev libavcodec-dev libavfilter-dev libavutil-dev libswscale-dev libswresample-dev
+4.  apt-get install frei0r-plugins-dev frei0r-plugins
+5. apt-get install graphviz 
+6. apt install doxygen libopencolorio-dev opencolorio-tools
+
+### installation
+1. mkdir build
+2. cd build
+3. cmake -DCMAKE_INSTALL_PREFIX=<path> ../
+4. make -j 3 
+
 
 
