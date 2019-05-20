@@ -11,8 +11,6 @@ requirements:
 2. Make and manually install into the directory
 3. Find the AppConfig.h file and change the JUCER_ENABLE_GPL_MODE to 1
 
-
-
 ## supercollider
 1. git clone <supercollider>
 2. follow the readme and install the packages. Problems with different versions of repo Qt and Qt webengine and Qt webkit seems to have been solved, so if you're using the latest version of ubuntu, you're not likely to need downloading of the qt source or finding it, and going through the hassle of configuring and installing qt, the repository version works
@@ -57,13 +55,14 @@ for helm: make and probably resolve the paths
 1. The global makefile will build the vst, lv2 and standalone version
 2. If it complains about the vst aeffect.h that is missing, add the vst library path to the jucer file
 
-## installing faust
+## faust
 Faust is a meta language transpiler with various audio language targets, such as pure data, supercollider, c, c++, webaudio
 
 1. git clone <faust>
-2. instlal from the repo libmicrohttpd{-dev} and llvm
-3. make 
+2. install from the repo libmicrohttpd{-dev} and llvm
+3. cd build ; mkdir <builddir> ; cd <builddir>
 Note: llvm used to have 2 flavours for compilation, so -fno-rtti and rtti. By default rtti is in place. But all linked/compiled programs needed to be one of the two. Past llvm-6 this is not an issue
+4. cmake ../ -DCMAKE_INSTALL_PREFIX=/home/ubs/.local -DLLVM_CONFIG=llvm-config-8 -C ../backends/all.cmake
 
 ## Compiling surge the synthesizer
 
@@ -169,6 +168,4 @@ Olive is a video editor
 2. cd build
 3. cmake -DCMAKE_INSTALL_PREFIX=<path> ../
 4. make -j 3 
-
-
 
