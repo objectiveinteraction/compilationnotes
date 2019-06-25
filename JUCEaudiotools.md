@@ -162,6 +162,7 @@ Olive is a video editor
 4.  apt-get install frei0r-plugins-dev frei0r-plugins
 5. apt-get install graphviz 
 6. apt install doxygen libopencolorio-dev opencolorio-tools
+7. apt install qttools5-dev-tools  qttools5-dev
 
 ### installation
 1. mkdir build
