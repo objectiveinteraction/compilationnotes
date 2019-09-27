@@ -170,3 +170,26 @@ Olive is a video editor
 3. cmake -DCMAKE_INSTALL_PREFIX=<path> ../
 4. make -j 3 
 
+
+## zynaddsubfx + zynaddfusion
+zynaddsubfx is an additive subtractive fm synth
+### dependencies
+1. liblo + all the dependencies from the list
+### dependencies ( the ones that aren't stated )
+2. yacc/bison
+3. automake/autotools
+4. doxygen
+5. jack-dev 
+6. mruby
+
+### installation
+#### to build just zynaddsubfx
+1. git clone https://github.com/zynaddsubfx/zynaddsubfx.git
+    * or
+2. git clone https://github.com/zynaddsubfx/zyn-fusion-build.git
+3. cd zyn-fusion-build
+4. remove all sudo instructions, we're not going to install into the global repo, just want to build the project
+
+
+
+
