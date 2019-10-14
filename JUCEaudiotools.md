@@ -191,5 +191,8 @@ zynaddsubfx is an additive subtractive fm synth
 4. remove all sudo instructions, we're not going to install into the global repo, just want to build the project
 
 
+## QT5 
 
-
+# Errors
+1. quick not found
+    * install qtdeclarative5-dev 
