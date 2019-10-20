@@ -196,3 +196,16 @@ zynaddsubfx is an additive subtractive fm synth
 # Errors
 1. quick not found
     * install qtdeclarative5-dev 
+2. qtwebkit/qwebview is not found
+    * apt-get install libqt5webkit5-dev
+    * apt-get install libxslt1-dev libxslt1.1
+    * apt install libqtwebkit-dev
+    * apt install libqt5webkit5-dev
+    * add this to the .pro file
+        greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
+
+# Camomile 
+## To compile
+1. Some errors will crop up because the cflags,cppflags,juce_cflags and juce_cppflags don't point to the place where pure data has it's headers installed
+2. If using system then export C_FLAGS=<dir>, CPP_FLAGS=<dir>, JUCE_CFLAGS=<dir>, JUCE_CXXFLAGS=<dir>
+   where <dir>=-I/usr/include/pd 
