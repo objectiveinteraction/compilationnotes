@@ -209,3 +209,4 @@ zynaddsubfx is an additive subtractive fm synth
 1. Some errors will crop up because the cflags,cppflags,juce_cflags and juce_cppflags don't point to the place where pure data has it's headers installed
 2. If using system then export C_FLAGS=<dir>, CPP_FLAGS=<dir>, JUCE_CFLAGS=<dir>, JUCE_CXXFLAGS=<dir>
    where <dir>=-I/usr/include/pd 
+3. Need to manually create the lv2_file_generator. cd LV2/lv2_file_generator, and run make
